@@ -2,16 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 8</title>
-    <link rel="stylesheet" href="css/common.css" />
+    <title>Модуль 8 - Занятие 1</title>
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <ul>
-      <li><a href="01-gallery.html">Image gallery</a></li>
-      <li><a href="02-video.html">Video playback</a></li>
-      <li><a href="03-feedback.html">Feedback form</a></li>
-    </ul>
-  </body>
+    <div class="primary-banner">
+      <p class="text"></p>
+      <button class="cta-btn">Нажми меня</button>
+    </div>
+    <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+    <script src="js/app.js" type="module"></script>
+</body>
 </html>
