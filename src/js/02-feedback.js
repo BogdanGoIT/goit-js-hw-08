@@ -15,25 +15,19 @@ refs.form.addEventListener('submit', onSubmitForm);
 // refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
 
 refs.form.addEventListener('input', evt => {
+    
     // console.log(evt.target.name);
     // console.log(evt.target.value)
 
     formData[evt.target.name] = evt.target.value;
 
-    // console.log(formData);
+    console.log(formData);
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 
-    const savedData = localStorage.getItem(STORAGE_KEY)
-    console.log('savedData', savedData);
 
-    const parsedData = JSON.parse(savedData)
-    console.log(parsedData, 'parsedData');
-
-    
 })
+populateTextarea()
 
-// populateTextarea();
 
 /*
  * - Останавливаем поведение по умолчанию
@@ -70,15 +64,35 @@ function onSubmitForm(evt){
  * - Получаем значение из хранилища
  * - Если там что-то было, обновляем DOM
  */
-// function populateTextarea(){
-//     const savedMessage = localStorage.getItem(STORAGE_KEY);
+function populateTextarea() {
+  const savedMessage = localStorage.getItem(STORAGE_KEY);
 
-//     if(savedMessage){
-//     console.log(savedMessage);
+  if (savedMessage) {
+    refs.textarea.value = savedMessage;
+  }
+}
 
-//     refs.textarea.value = savedMessage;
-//     }
+// Домой
+// сделать так чтобы сохраняло не только сообщение но и имя, и все в одном обьекте
 
-// }
+// const formData = {};
+
+// refs.form.addEventListener('input', e => {
+//   // console.log(e.target.name);
+//   // console.log(e.target.value);
+
+//   formData[e.target.name] = e.target.value;
+
+//   console.log(formData);
 
 
+// localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+
+// const savedData = localStorage.getItem(STORAGE_KEY)
+// console.log('savedData', savedData);
+
+// const parsedData = JSON.parse(savedData)
+// console.log(parsedData, 'parsedData');
+
+
+// });
