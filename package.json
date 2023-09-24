@@ -17,12 +17,6 @@
   "bugs": {
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
-  "dependencies": {
-    "@pnotify/core": "^5.2.0",
-    "swiper": "^10.2.0",
-    "tippy.js": "^6.3.7",
-    "typed.js": "^2.0.16"
-  },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "parcel": "^2.6.0",

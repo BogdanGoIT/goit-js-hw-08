@@ -1,66 +1,42 @@
-import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
+const LOCALSTORAGE_KEY = 'is-sidebar-open';
 
-import { info } from "@pnotify/core";
-import "@pnotify/core/dist/PNotify.css";
-import "@pnotify/core/dist/BrightTheme.css";
-// import '@pnotify/core/dist/Material.css';
 
-import Swiper,{ Navigation, Pagination } from 'swiper';
+const sidebar = document.querySelector('.sidebar');
 
-new Swiper('.swiper', {
-  // configure Swiper to use modules
-  modules: [Navigation, Pagination],
+initSidebar()
 
+document.querySelector('[data-open-sidebar]').addEventListener('click', e => {
+  openSidebar();
+  saveSidebarStateToLS(true)
 });
 
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'vertical',
-  loop: true,
 
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
+document.querySelector('[data-close-sidebar]').addEventListener('click', e => {
+  closeSidebar();
+  saveSidebarStateToLS(false)
+})
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
-});
-
-tippy('.primary-banner .cta-btn', {
-  content: 'Скажи паляниця',
-  placement: 'bottom',
-});
-
-const onClick = () => {
-  info({
-    title: "Button Clicked",
-    text:
-      "You have clicked the button. You may now complete the process of reading the notice.",
-  
-  });
+function openSidebar(){
+  sidebar.classList.add('is-open');
 }
 
-document.querySelector('.primary-banner .cta-btn').addEventListener('click', onClick)
+function closeSidebar(){
+  sidebar.classList.remove('is-open');
+}
 
+function saveSidebarStateToLS(state){
+  localStorage.setItem(LOCALSTORAGE_KEY, state)
+}
 
+function initSidebar(){
+  const persistedSidebarState = localStorage.getItem(LOCALSTORAGE_KEY);
 
-import Typed from 'typed.js';
+  if(persistedSidebarState){
+    const shouldOpenSidebar = JSON.parse(persistedSidebarState);
 
-new Typed('.primary-banner .text', {
-  strings: ['Знижки на пиво', 'Пиво за дешево до суботи'],
-  typeSpeed: 50,
-  backSpeed: 40,
-  loop: true,
-});
-  
+    if(shouldOpenSidebar){
+      openSidebar()
+    }
 
+  }
+}
