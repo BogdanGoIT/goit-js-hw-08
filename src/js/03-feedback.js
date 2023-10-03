@@ -17,6 +17,7 @@ refs.form.addEventListener('input', throttle(setItem, 500));
 refs.form.addEventListener('submit', onSubmitTarget);
 
 function setItem(e){
+    
     formData[e.target.name] = e.target.value;  
     // console.log(formData)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
